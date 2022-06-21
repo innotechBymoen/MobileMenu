@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu 🍔</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/images/menu.svg" type="image/x-icon">
+</head>
+
+<body>
+    <!-- All of the HTML magic happens inside of here. You can choose to have a different desktop menu / header but in modern
+    times you will find that many sites actually leave their mobile header as their desktop header. 
+
+    One very important thing about this header is that the order of the contents inside matters!
+    The radio buttons must be the oldest siblings, followed by the normal header images, followed by the section
+    that contains the actual menu. These tags being siblings is what makes this whole thing work! -->
+    <header id="mobile_header">
+        <!-- These are radio buttons, usually used in forms when you have to choose 1 option out of many. 
+            We use these to allow us to have one button that opens the menu, and one that closes the menu.
+            In reality, these radio buttons don't actually show on the page, as we don't want to see them! -->
+        <input type="radio" name="menu" id="menu_open" class="menu_radio_button">
+        <input type="radio" name="menu" id="menu_close" class="menu_radio_button">
+
+        <!-- Here we have standard header content, two images. 
+            The only difference is the label wrapped around the second image, 
+            which is designed to activate the menu_open button when clicked on -->
+        <img src="/images/logo.svg" alt="Hamburger, French Fries and Hot Dog">
+        <!-- The label is not a visable HTML element, but instead adds functionality when used correctly.
+        The for attribute ties the label to the input with the same ID, so this label is tied to the
+        input with the id of menu_open. When you click the image, you are really 'selecting' the menu_open input. -->
+        <label for="menu_open">
+            <!-- The class of hoverable on the image is just to give some animations when the image is hovered -->
+            <img src="/images/menu.svg" alt="Open Menu Label" class="hoverable">
+        </label>
+
+        <!-- This part is actually pretty simple, it is the menu that shows up when the open button is clicked. 
+            We build it here assuming the display will be turned off by default, which it will be.
+            In reality, it is just a normal section with content.-->
+        <section id="mobile_menu">
+            <div id="menu_header">
+                <img src="/images/logo.svg" alt="Hamburger, French Fries and Hot Dog">
+                <!-- HEY LOOK! Another label, this one is for the menu_close button. 
+                Meaning when it is clicked, the menu will close if we use CSS correctly -->
+                <label for="menu_close">
+                    <img src="/images/exit.svg" alt="Exit Menu Label" class="hoverable">
+                </label>
+            </div>
+            <h1>About</h1>
+            <h1>Menu</h1>
+            <h1>Contact</h1>
+        </section>
+    </header>
+
+    <!-- This stuff here is just to fill the page out in the standard 3 section system and has nothing to do with the menu at the top -->
+    <main id="page_content">
+        <h1>CONTENT</h1>
+    </main>
+
+    <footer id="page_footer">
+        <h1>FOOTER</h1>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+/* Standard starting website  stuff, nothing new here */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    grid-template-rows: auto 1fr auto;
+}
+
+img, svg, iframe {
+    width: 100%;
+}
+
+/* This is for the normal header that appears when the menu is closed.
+Nothing really special, standard CSS for grid */
+#mobile_header {
+    min-height: 20vh;
+    width: 100%;
+
+    display: grid;
+    place-items: center;
+    grid-auto-flow: column;
+}
+
+#mobile_header img {
+    width: 40px;
+    height: 40px;
+}
+
+/* This is an IMPORTANT rule, we hide those radio buttons that are going to control when the menu is hidden and show 
+    We hide them mostly because they are ugly and mess with our grid
+*/
+.menu_radio_button {
+    display: none;
+}
+
+/* We have some new things here! These rules are for the orange menu that appears when the menu is OPENED*/
+#mobile_menu {
+    /* This is CSS that allows us to 'pull' the mobile menu out of the grid 
+        In reality, the display absolute property makes it so the mobile_menu is no longer considered
+        in the regular 'flow' of the site. You can think of it as an un-attached element now and you can move it where you want
+        using top, bottom, left and right.
+        top: 0px will put the menu at the very top, and left 0px will put the menu at the very left.
+
+        The z-index property tells our CSS that the menu should be placed 'on-top' of anything with a z-index less than 10
+        This is fine since by default, the z-index of anything is 1
+    */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+
+    /* Finally we hide and do normal styling to the menu. 
+    Normally when working I add the display: none at the end so I can see what I am doing */
+    display: none;
+    place-items: center;
+    grid-template-rows: 20vh;
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+    color: white;
+}
+
+/* Here is the whole point of the radio buttons. We use the :checked pseudo selector which allows us to only apply these rules
+    when the #menu_open radio button is checked. We then use the younger sibling selector ~ to grab the mobile_menu and set display to grid.
+    This overrides the rule above which set the display to none.
+    
+    Remember, this rule is only applied when the menu_open is selected, when it's not selected this rule does not apply.*/
+#menu_open:checked~#mobile_menu {
+    display: grid;
+}
+
+/* This is just normal style for the first row of the menu with the logo and close button */
+#menu_header {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    grid-auto-flow: column;
+    height: 20vh;
+}
+
+/* Not related to the menu, just normal content things for the main and footer */
+#page_content {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+}
+
+#page_footer {
+    min-height: 20vh;
+    display: grid;
+    place-items: center;
+}
+
+/* Give the shadow animation when hovered to anything that has the class hoverable */
+.hoverable {
+    transition: all 0.3s ease-in-out;
+    filter: drop-shadow(0px 0px 0px black);
+}
+
+.hoverable:hover {
+    cursor: pointer;
+    filter: drop-shadow(3px 3px 6px gray);
+}
