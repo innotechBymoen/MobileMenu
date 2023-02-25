@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     font-weight: lighter;
 }
 
@@ -12,7 +12,9 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-img, svg, iframe {
+img,
+svg,
+iframe {
     width: 100%;
 }
 
@@ -56,14 +58,14 @@ Nothing really special, standard CSS for grid */
     z-index: 10;
 
     /* Finally we hide and do normal styling to the menu. 
-    Normally when working I add the display: none at the end so I can see what I am doing */
-    display: none;
+    Normally when working I add the display: none at the end of my styling so I can see what I am doing while I style the other attributes */
     place-items: center;
     grid-template-rows: 20vh;
     width: 100%;
     height: 100%;
     background-color: orange;
     color: white;
+    display: none;
 }
 
 /* Here is the whole point of the radio buttons. We use the :checked pseudo selector which allows us to only apply these rules
