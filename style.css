@@ -55,17 +55,23 @@ Nothing really special, standard CSS for grid */
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 10;
+    z-index: -1;
+    
 
     /* Finally we hide and do normal styling to the menu. 
-    Normally when working I add the display: none at the end of my styling so I can see what I am doing while I style the other attributes */
+    Normally when working I add the visibility: hidden and other animations at the end of my styling so I can see what I am doing while I style the other attributes */
+    display: grid;
     place-items: center;
     grid-template-rows: 20vh;
     width: 100%;
     height: 100%;
     background-color: orange;
     color: white;
-    display: none;
+    /* These hide the menu so it can't be seen by default. The transition and transform are just for fun animations and aren't needed unless you want to animate.
+    You can also animate different properties if you would like. */
+    visibility: hidden;
+    transition: all ease-in-out 0.33s;
+    transform: scale(0);
 }
 
 /* Here is the whole point of the radio buttons. We use the :checked pseudo selector which allows us to only apply these rules
@@ -74,7 +80,11 @@ Nothing really special, standard CSS for grid */
     
     Remember, this rule is only applied when the menu_open is selected, when it's not selected this rule does not apply.*/
 #menu_open:checked~#mobile_menu {
-    display: grid;
+    /* This makes it so you can see the menu */
+    visibility: visible;
+    /* This applies the changes that animate the menu into view */
+    transform: scale(1);
+    z-index: 10;
 }
 
 /* This is just normal style for the first row of the menu with the logo and close button */
